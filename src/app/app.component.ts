@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'audiototext-ui';
+  constructor(private router: Router) {}
+
+  navigateURL(url: string) {
+    if(url == 'transcribe') {
+      this.router.navigateByUrl('/transcribe');
+    }
+  }
 }

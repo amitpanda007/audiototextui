@@ -2,3 +2,9 @@
   <h2>Upload file & Transcribe</h2>
   <app-drag-drop></app-drag-drop>
 </div>
+
+<div class="container" *ngIf="transcription">
+  <mat-card>
+    <mat-card-content [innerHTML]="transcription"></mat-card-content>
+  </mat-card>
+</div>

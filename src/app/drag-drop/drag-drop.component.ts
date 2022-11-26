@@ -11,7 +11,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class DragDropComponent implements OnInit {
   fileArr: any[] = [];
-  imgArr: any[] = [];
   fileObj: any[] = [];
   form: FormGroup;
   msg!: string;
@@ -35,7 +34,6 @@ export class DragDropComponent implements OnInit {
     //   const file = e as HTMLInputElement;
       const file = e as any;
       const url = URL.createObjectURL(file[i]);
-      // this.imgArr.push(url);
       this.fileArr.push({ item, url: url });
     });
 
@@ -57,6 +55,7 @@ export class DragDropComponent implements OnInit {
         switch (event.type) {
           case HttpEventType.Sent:
             console.log('Request has been made!');
+            this.msg = 'Upload started!';
             break;
           case HttpEventType.ResponseHeader:
             console.log('Response header has been received!');
@@ -65,15 +64,17 @@ export class DragDropComponent implements OnInit {
             if(event.total) {
                 this.progress = Math.round((event.loaded / event.total) * 100);
                 console.log(`Uploaded! ${this.progress}%`);
+                this.msg = `Uploaded: ${this.progress}%`
             }
             break;
           case HttpEventType.Response:
             console.log('File uploaded successfully!', event.body);
+            this.msg = 'File uploaded successfully!';
             setTimeout(() => {
               this.progress = 0;
               this.fileArr = [];
               this.fileObj = [];
-              this.msg = 'File uploaded successfully!';
+              this.msg = event.body.message;
             }, 3000);
         }
       });

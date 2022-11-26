@@ -4,6 +4,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { DragdropService } from '../drag-drop.service';
 
 @Component({
   selector: 'transcribe',
@@ -11,9 +12,13 @@ import {
   styleUrls: ['transcribe.component.scss'],
 })
 export class TranscribeComponent implements OnInit {
+  public transcription: string;
 
-  constructor() { }
+  constructor(private dragdropService: DragdropService) { }
 
-  async ngOnInit() { }
-
+  async ngOnInit() { 
+    this.dragdropService.transcriptionDataChanged.subscribe(data => {
+      this.transcription = data;
+    });
+  }
 }

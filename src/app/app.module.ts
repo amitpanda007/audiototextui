@@ -11,14 +11,15 @@ import { AngularMaterialModule } from './angular-material.module';
 import { TranscribeComponent } from './transcribe/transcribe.component';
 import { DragDropComponent } from './drag-drop/drag-drop.component';
 import { DragDropFileUploadDirective } from './drag-drop-file-upload.directive';
-
+import { ContentDialogComponent } from './common/content/content-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DragDropComponent, 
+    DragDropComponent,
     DragDropFileUploadDirective,
-    TranscribeComponent
+    TranscribeComponent,
+    ContentDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,9 +28,10 @@ import { DragDropFileUploadDirective } from './drag-drop-file-upload.directive';
     HttpClientModule,
     AngularMaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ContentDialogComponent],
 })
-export class AppModule { }
+export class AppModule {}

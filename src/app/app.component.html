@@ -91,6 +91,10 @@
     justify-content: center;
   } */
 
+  .app-content {
+    min-height: 100vh;
+  }
+
   .footer {
     position: fixed;
     display: flex;
@@ -118,22 +122,8 @@
   }
 </style>
 
-<mat-toolbar>
-  <button mat-icon-button>
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span class="home-label" routerLink="/">Audio2Text</span>
-  <span class="toolbar-spacer"></span>
-  
-  <button mat-icon-button (click)="navigateURL('transcribe')">
-    <mat-icon>transcribe</mat-icon>
-  </button>
-  <button mat-icon-button>
-    <mat-icon>info</mat-icon>
-  </button>
-  <button mat-icon-button>
-    <mat-icon>payments</mat-icon>
-  </button>
-</mat-toolbar>
-
-<router-outlet></router-outlet>
+<nav>
+  <div class="app-content">
+    <router-outlet></router-outlet>
+  </div>
+</nav>

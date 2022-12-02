@@ -1,0 +1,141 @@
+<!-- Toolbar -->
+<mat-drawer-container class="drawer-container" autosize>
+  <div role="banner">
+    <!-- <div class="toolbar top flex-display" *ngIf="!(isHandset | async)!.matches">
+      <div class="left flex-display"></div>
+      <div class="right"></div>
+    </div>
+
+    <div
+      *ngIf="(isHandset | async)!.matches"
+      class="toolbar top-handset flex-display"
+    >
+      <div class="mobile-topnav-option"></div>
+    </div> -->
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>manage_accounts</mat-icon>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+
+    <mat-toolbar class="navbar bottom">
+      <div class="title-container">
+        <span class="pointer" (click)="navigate('home')">Audio2Text</span>
+      </div>
+      <div>
+        <div *ngIf="!(isHandset | async)!.matches" class="nav-menu-md">
+          <span class="divider"></span>
+          <span class="pointer" (click)="navigate('transcribe')"
+            >Transcribe</span
+          >
+          <span class="divider"></span>
+          <span class="pointer" (click)="navigate('pricing')">Pricing</span>
+          <span class="divider"></span>
+          <span class="pointer" (click)="navigate('about')">About</span>
+        </div>
+        <button
+          *ngIf="(isHandset | async)!.matches"
+          mat-icon-button
+          class="menu-icon"
+          aria-label="sidenav icon"
+          (click)="drawer.toggle()"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+  </div>
+
+  <mat-drawer
+    #drawer
+    class="sidenav-content"
+    mode="over"
+    position="end"
+    [ngClass]="{ hidden: !(isHandset | async)!.matches }"
+  >
+    <section class="flex-display column nav-section">
+      <p>
+        <span
+          class="pointer"
+          (click)="navigate('transcribe')"
+          (click)="drawer.toggle()"
+          >Transcribe</span
+        >
+      </p>
+
+      <p>
+        <span
+          class="pointer"
+          (click)="navigate('pricing')"
+          (click)="drawer.toggle()"
+          >Pricing</span
+        >
+      </p>
+
+      <p>
+        <span
+          class="pointer"
+          (click)="navigate('about')"
+          (click)="drawer.toggle()"
+          >About</span
+        >
+      </p>
+
+      <p class="space-1 flex-display nav-social">
+        <a target="_blank"
+          ><img
+            width="24px"
+            height="24px"
+            src="../../../assets/images/icons/facebook-white.png"
+        /></a>
+        <a target="_blank"
+          ><img
+            width="24px"
+            height="24px"
+            src="../../../assets/images/icons/twitter-white.png"
+        /></a>
+        <a target="_blank"
+          ><img
+            width="24px"
+            height="24px"
+            src="../../../assets/images/icons/instagram-logo-white.png"
+        /></a>
+      </p>
+    </section>
+  </mat-drawer>
+
+  <ng-content></ng-content>
+
+  <footer>
+    <ul class="global-footer-list">
+      <li>
+        <a href="/transcribe" data-analytics-link="aboutFooterLink"
+          >Transcribe</a
+        >
+      </li>
+      <li>
+        <a href="/pricing" data-analytics-link="aboutFooterLink">Pricing</a>
+      </li>
+      <li>
+        <a href="/about" data-analytics-link="aboutFooterLink">About</a>
+      </li>
+
+      <li>
+        <a href="/auth/login" data-analytics-link="helpFooterLink">Login</a>
+        <a
+          href="javascript: void(0)"
+          data-analytics-link="helpFooterLink"
+          (click)="logout()"
+          >Logout</a
+        >
+      </li>
+    </ul>
+
+    <p>&copy; Audio2Text 2022</p>
+  </footer>
+</mat-drawer-container>

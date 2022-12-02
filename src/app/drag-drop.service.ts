@@ -7,7 +7,6 @@ import { Utils } from '../lib/utils';
 @Injectable({
   providedIn: 'root',
 })
-
 export class DragdropService {
   public transcriptionDataChanged = new Subject<string>();
   constructor(private http: HttpClient) {}
@@ -27,7 +26,7 @@ export class DragdropService {
     this.triggerEvent(folderName);
 
     return this.http
-      .post('http://localhost:8000/transcribe-upload', formData, {
+      .post('http://localhost:80/transcribe-upload', formData, {
         reportProgress: true,
         observe: 'events',
       })
@@ -35,16 +34,18 @@ export class DragdropService {
   }
 
   triggerEvent(folderName: string) {
-    const evtSource = new EventSource(`http://localhost:8000/transcribe/result?param=${folderName}`);
-    evtSource.addEventListener("update", (event) => {
-        console.log(event);
-        this.transcriptionDataChanged.next(event.data);
+    const evtSource = new EventSource(
+      `http://localhost:80/transcribe/result?param=${folderName}`
+    );
+    evtSource.addEventListener('update', (event) => {
+      console.log(event);
+      this.transcriptionDataChanged.next(event.data);
     });
-    evtSource.addEventListener("end", (event) => {
-        console.log('SSE Event end.')
-        evtSource.close();
+    evtSource.addEventListener('end', (event) => {
+      console.log('SSE Event end.');
+      evtSource.close();
     });
-}
+  }
 
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';

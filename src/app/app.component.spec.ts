@@ -20,10 +20,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'audiototext-ui'`, () => {
+  it(`should have as title 'Audio2Text'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('audiototext-ui');
+    expect(app.title).toEqual('Audio2Text');
   });
 
   it('should render title', () => {

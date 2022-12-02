@@ -12,6 +12,7 @@ import { TranscribeComponent } from './transcribe/transcribe.component';
 import { DragDropComponent } from './drag-drop/drag-drop.component';
 import { DragDropFileUploadDirective } from './drag-drop-file-upload.directive';
 import { ContentDialogComponent } from './common/content/content-dialog.component';
+import { NavComponent } from './common/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ContentDialogComponent } from './common/content/content-dialog.componen
     DragDropFileUploadDirective,
     TranscribeComponent,
     ContentDialogComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,

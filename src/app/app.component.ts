@@ -8,10 +8,15 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   constructor(private router: Router) {}
+  public title = "Audio2Text";
 
   navigateURL(url: string) {
     if(url == 'transcribe') {
       this.router.navigateByUrl('/transcribe');
+    }else if(url == 'about') {
+      this.router.navigateByUrl('/about');
+    }else if(url == 'pricing') {
+      this.router.navigateByUrl('/pricing');
     }
   }
 }

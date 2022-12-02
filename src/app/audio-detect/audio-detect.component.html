@@ -1,0 +1,35 @@
+<div class="card-container">
+  <mat-card class="card-sm">
+    <mat-card-content class="card-content">
+      <button
+        mat-icon-button
+        aria-label="Record Audio"
+        class="btn"
+        *ngIf="!recording"
+        (click)="initiateRecording()"
+      >
+        <mat-icon class="icon">mic</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        aria-label="Record Audio"
+        class="btn red"
+        *ngIf="recording"
+        (click)="stopRecording()"
+      >
+        <mat-icon class="icon">stop_circle</mat-icon>
+      </button>
+      <audio controls="" *ngIf="url">
+        <source [src]="sanitize(url)" type="audio/wav" />
+      </audio>
+      <button
+        mat-icon-button
+        aria-label="Record Audio"
+        *ngIf="url"
+        (click)="uploadAudioRecording()"
+      >
+        <mat-icon class="icon">upload</mat-icon>
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>

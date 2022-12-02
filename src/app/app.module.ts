@@ -13,15 +13,17 @@ import { DragDropComponent } from './drag-drop/drag-drop.component';
 import { DragDropFileUploadDirective } from './drag-drop-file-upload.directive';
 import { ContentDialogComponent } from './common/content/content-dialog.component';
 import { NavComponent } from './common/nav/nav.component';
+import { AudioDetectComponent } from './audio-detect/audio-detect.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavComponent,
     DragDropComponent,
     DragDropFileUploadDirective,
     TranscribeComponent,
     ContentDialogComponent,
-    NavComponent,
+    AudioDetectComponent,
   ],
   imports: [
     BrowserModule,

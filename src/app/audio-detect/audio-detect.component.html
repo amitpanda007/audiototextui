@@ -23,12 +23,14 @@
         <source [src]="sanitize(url)" type="audio/wav" />
       </audio>
       <button
-        mat-icon-button
+        mat-raised-button
+        class="mrg-1"
         aria-label="Record Audio"
         *ngIf="url"
         (click)="uploadAudioRecording()"
       >
         <mat-icon class="icon">upload</mat-icon>
+        upload & detect
       </button>
     </mat-card-content>
   </mat-card>

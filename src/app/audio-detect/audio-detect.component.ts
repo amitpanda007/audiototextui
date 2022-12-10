@@ -51,6 +51,7 @@ export class AudioDetectComponent implements OnInit {
   sanitize(url: string) {
     return this.domSanitizer.bypassSecurityTrustUrl(url);
   }
+
   /**
    * Start recording.
    */
@@ -67,6 +68,7 @@ export class AudioDetectComponent implements OnInit {
       .getUserMedia(mediaConstraints)
       .then(this.successCallback.bind(this), this.errorCallback.bind(this));
   }
+
   /**
    * Will be called automatically.
    */
@@ -81,6 +83,7 @@ export class AudioDetectComponent implements OnInit {
     this.record = new StereoAudioRecorder(stream, options);
     this.record.record();
   }
+
   /**
    * Stop recording.
    */
@@ -88,6 +91,7 @@ export class AudioDetectComponent implements OnInit {
     this.recording = false;
     this.record.stop(this.processRecording.bind(this));
   }
+
   /**
    * processRecording Do what ever you want with blob
    * @param  {any} blob Blog
@@ -98,6 +102,7 @@ export class AudioDetectComponent implements OnInit {
     console.log('blob', blob);
     console.log('url', this.url);
   }
+
   /**
    * Process Error.
    */

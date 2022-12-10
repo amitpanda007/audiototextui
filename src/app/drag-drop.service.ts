@@ -29,7 +29,8 @@ export class DragdropService {
       .post('http://localhost:80/transcribe-upload', formData, {
         reportProgress: true,
         observe: 'events',
-      })
+        }
+      )
       .pipe(catchError(this.errorMgmt));
   }
 
